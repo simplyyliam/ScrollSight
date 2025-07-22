@@ -1,69 +1,22 @@
-# React + TypeScript + Vite
+# ScrollSight
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+<img width="2848" height="1768" alt="ScrollSight" src="https://github.com/user-attachments/assets/a68b1931-6f99-475f-a233-2fa579e49946" />
 
-Currently, two official plugins are available:
+A minimal and experimental document reader that visualizes scroll progression.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Why I Made This
 
-## Expanding the ESLint configuration
+I came across a visual concept on Pinterest one day — a smooth-scrolling document interface that highlighted the current section as you read. I thought it looked fun and decided to try building it myself to see how it worked.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+I started by mocking up a simple document layout (no real content, just structured sections). Once I was happy with the format, I added a **section tracker** — a floating UI element that displays the name of the section you're currently reading, along with your scroll progress percentage.
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+After that, I implemented the logic for updating the active section when a user clicks on a section name from the index (which is generated from the `DocumentList` object array). Then came the scroll logic, which mirrors the same behavior — as you scroll through the document, the currently viewed section is set as the active section in state.
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+Finally, I refined the scroll percentage logic to show how far you've scrolled through the entire page — a small but satisfying visual detail.
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+This project doesn’t aim to be useful or production-ready — it’s just a fun experiment to explore scroll-based interactions and UI motion.
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+
+
