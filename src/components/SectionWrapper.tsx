@@ -1,15 +1,17 @@
-import type { HtmlHTMLAttributes } from "react";
-import type React from "react";
+import { forwardRef, type HtmlHTMLAttributes } from "react";
 
-
-
-export const SectionWrapper: React.FC<HtmlHTMLAttributes<HTMLDivElement>> = ({
-    children,
-    className,
-    ...props
-}) => {
+export const SectionWrapper = forwardRef<HTMLDivElement, HtmlHTMLAttributes<HTMLDivElement>>(
+  ({ children, className, ...props }, ref) => {
     return (
-        <div className={`flex flex-col max-w-[55vw] h-full p-10 gap-10  ${className}`}{...props}>{children}</div>
-    )
-}
+      <div
+        ref={ref}
+        className={`flex flex-col max-w-[55vw] h-full p-10 gap-10 ${className}`}
+        {...props}
+      >
+        {children}
+      </div>
+    );
+  }
+);
 
+SectionWrapper.displayName = "SectionWrapper";
